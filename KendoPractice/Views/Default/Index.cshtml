@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<div id="userGrid">
+   
+</div>
+<script>
+  var DataSource = new kendo.data.DataSource(
+        {
+            transport: {
+                read: {
+                    url: '@Url.Action("GetUserList", "Default")',
+                    dataType: "json"
+                }
+                //update:{ }
+            }
+
+        });
+
+    var grid = $("#userGrid").kendoGrid({
+     
+
+        dataSource: DataSource,
+    
+        columns: [
+        { field: "Name" },
+        {field: "City"},
+        { field: "Address" },
+        { field: "CustomerId" },
+        { field: "CityId" },
+        { field: "Country" },
+        { field: "Created" }
+       ]
+
+    });
+</script>
+
+
